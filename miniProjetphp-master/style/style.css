@@ -1,0 +1,1562 @@
+:root {
+    --couleurFondPage: #faf8f8;
+    --policeBlanche: rgb(255, 255, 255);
+    --policeNoire: rgb(29, 29, 29);
+    --policeGrisee: rgb(142, 142, 142);
+    --globalRadius: 5px;
+
+    --couleurMiseEnForme: rgb(242, 241, 236);
+    --couleurBouton: #24518c;
+    --couleurBoutonHover: #0c305f;
+    --couleurFocus: var(--couleurBoutonHover);
+    --couleurBoutonAnnuler: #ff7474;
+    --couleurBoutonAnnulerHover: darkred;
+    --couleurBoutonValider: #8bc196;
+    --couleurBoutonValiderHover: #3e7449;
+    --couleurRadioHover: rgba(100, 100, 100,0.3);
+    --couleurPopupEdit: #67c1e4;
+    --couleurMenu: #234f7b;
+    --couleurFondMenuMobile: rgba(255, 255, 255, 0.959);
+    --couleurHover: #173358;
+    --couleurHoverMenuTexte: var(--policeBlanche);
+    --couleurMenuActif: rgb(154, 221, 254);
+    --even: #cbd5e6;
+    --odd: #e0e8f2;
+}
+
+@font-face {
+    src: url(../fonts/WorkSans-Medium.ttf);
+    font-family: WorkSans;
+}
+
+/* Ne fonctionne pas sur tous les navigateurs */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+body::-webkit-scrollbar {
+    width: 13px;
+}
+body::-webkit-scrollbar-track {
+    background: #fff;
+    margin: 5px;
+    border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--couleurBouton);
+    border: 2px solid #fff;
+    border-radius: 50px;
+}
+body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--couleurBoutonHover);
+}
+body::-webkit-scrollbar-thumb:active {
+    background-color: var(--couleurBoutonHover);
+}
+body {
+    background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='75' height='75' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(0,0%,100%,1)'/><path d='M32.763-11.976c-1.05-.075-1.95.676-2.024 1.726L29.764.849c-.075 1.05.675 1.95 1.725 2.026 1.05.075 1.95-.675 2.025-1.725l.975-11.1c.075-1.05-.675-1.95-1.725-2.025zM54.299 1.32a1.912 1.912 0 0 0-.386.015c-.975.15-1.725 1.05-1.575 2.1l1.5 11.025c.15.975 1.05 1.725 2.1 1.575a1.732 1.732 0 0 0 1.575-2.1l-1.5-11.025c-.131-.853-.836-1.533-1.714-1.59zm-46.93 1.22a1.809 1.809 0 0 0-1.662 1.663c-.075 1.05.675 1.952 1.65 2.027l11.1 1.05c.975.15 1.95-.601 2.025-1.651.15-.975-.6-1.95-1.65-2.025l-11.1-1.05a1.643 1.643 0 0 0-.363-.015zM1.76 13.017a1.825 1.825 0 0 0-1.285.6l-7.65 8.101c-.75.75-.675 1.95.075 2.625s1.95.674 2.625-.076l7.651-8.099c.75-.75.674-1.95-.076-2.625a1.785 1.785 0 0 0-1.34-.526zm75 0a1.825 1.825 0 0 0-1.285.6l-7.65 8.101c-.75.75-.675 1.95.075 2.625s1.95.674 2.625-.076l7.651-8.099c.75-.75.674-1.95-.076-2.625a1.785 1.785 0 0 0-1.34-.526zm-39.731 2.906a1.785 1.785 0 0 0-1.34.527l-7.95 7.723c-.75.675-.826 1.875-.076 2.625.675.75 1.875.752 2.625.077l7.95-7.725c.75-.675.826-1.875.076-2.625a1.825 1.825 0 0 0-1.285-.602zm24.639 18.928c-.24.02-.48.085-.705.197a1.903 1.903 0 0 0-.825 2.55l5.1 9.902a1.902 1.902 0 0 0 2.55.824c.975-.45 1.276-1.574.826-2.55l-5.1-9.9c-.395-.73-1.125-1.083-1.846-1.023zm-50.37-4.862a1.756 1.756 0 0 0-1.035.336c-.825.6-1.05 1.725-.524 2.625l6.15 9.223c.6.9 1.8 1.127 2.625.526.9-.6 1.124-1.8.524-2.624l-6.15-9.226a1.912 1.912 0 0 0-1.59-.86zm32.705 9.766c-.12-.006-.243 0-.365.019l-10.95 2.175c-1.05.15-1.725 1.126-1.5 2.176.15 1.05 1.126 1.725 2.176 1.5l10.95-2.175c1.05-.15 1.725-1.125 1.5-2.175a1.99 1.99 0 0 0-1.811-1.52zm4.556 12.195a1.932 1.932 0 0 0-1.845.949c-.45.9-.15 2.025.75 2.55l9.75 5.4c.9.45 2.025.15 2.55-.75.525-.9.15-2.025-.75-2.55l-9.75-5.4a1.958 1.958 0 0 0-.705-.199zM71.913 58c-1.05-.075-1.875.748-1.95 1.798l-.45 11.1c-.075 1.05.75 1.876 1.8 1.95.975 0 1.875-.75 1.95-1.8l.45-11.1c.075-1.05-.75-1.873-1.8-1.948zm-55.44 1.08a1.865 1.865 0 0 0-1.035.42l-8.775 6.825c-.75.6-.9 1.8-.3 2.625.6.75 1.8.9 2.626.3l8.775-6.827c.75-.6.9-1.8.3-2.625a1.783 1.783 0 0 0-1.591-.72zm16.29 3.945c-1.05-.075-1.95.675-2.024 1.725l-.975 11.099c-.075 1.05.675 1.95 1.725 2.026 1.05.075 1.95-.675 2.025-1.725l.975-11.102c.075-1.05-.675-1.95-1.725-2.024z'  stroke-width='1' stroke='none' fill='hsla(259, 2%, 97%, 1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+    display: grid;
+    /* padding: 0;
+    margin: 0; */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+form {
+    display: grid;
+    font-family: WorkSans;
+    font-size: .85em;
+}
+
+h1 {
+    font-family: WorkSans;
+    font-size: 2em;
+    color: var(--couleurBoutonHover);
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+h2 {
+    font-family: WorkSans;
+    color: var(--policeBlanche);
+    text-align: center;
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+    font-size: .85em;
+    color: var(--policeBlanche);
+}
+
+input:not(input[type="radio"], input[type="checkbox"]) {
+    border-radius: var(--globalRadius);
+    border-style: none;
+    padding: 12px;
+    margin: 20px;
+    font-family: WorkSans;
+    font-size: 1em;
+    color: var(--policeNoire);
+    width: 80%;
+}
+
+input:focus {
+    outline: var(--couleurFocus) solid 2px;
+}
+
+input::placeholder {
+    font-family: WorkSans;
+    font-size: 0.9em;
+    color: var(--policeGrisee);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + .radioLabel {
+    background-color: var(--couleurBoutonHover);
+    color: var(--policeBlanche);
+}
+
+input[type="radio"]:checked + .radioLabel::before {
+    height: 8px;
+    width: 8px;
+    border: 4px solid var(--policeBlanche);
+}
+.radioLabel {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    border: 2px solid var(--couleurBoutonHover);
+    border-radius: var(--globalRadius);
+    padding: 3px;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.radioLabel:hover {
+    animation: hoverWaveRadio .2s cubic-bezier(.16,.83,.59,.91);
+}
+.radioLabel::before {
+    content: "";
+    height: 12px;
+    width: 12px;
+    border: 2px solid var(--couleurBoutonHover);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+@keyframes hoverWaveRadio {
+    0% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 0%, transparent 0);
+
+    }
+    10% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 20%, transparent 0);
+
+    }
+    20% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 40%, transparent 0);
+
+    }
+    30% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 60%, transparent 0);
+
+    }
+    40% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 80%, transparent 0);
+
+    }
+    50% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 100%, transparent 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 80%, transparent 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 60%, transparent 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 40%, transparent 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 20%, transparent 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurRadioHover) 0 0%, transparent 0);
+
+    }
+}
+
+select {
+    border-radius: var(--globalRadius);
+    border-style: none;
+    padding: 12px;
+    margin: 20px;
+    font-family: WorkSans;
+    font-size: 1em;
+    color: var(--policeNoire);
+    width: 85%;
+}
+
+button {
+    border-radius: var(--globalRadius);
+    border-style: none;
+    padding: 12px;
+    margin: 20px;
+    color: var(--policeGrisee);
+    font-family: WorkSans;
+    font-size: 1em;
+}
+
+button:focus {
+    outline: var(--couleurFocus) solid 2px;
+}
+
+table {
+    margin: 20px;
+    border-collapse: separate;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--even);
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: var(--odd);
+}
+
+td {
+    border-left: solid 1px var(--couleurBoutonHover);
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+td:first-child {
+    border-left: solid 1px transparent;
+    border-top-left-radius: var(--globalRadius);
+    border-bottom-left-radius: var(--globalRadius);
+}
+
+td:last-child {
+    border-right: solid 1px transparent;
+    border-bottom-right-radius: var(--globalRadius);
+    border-top-right-radius: var(--globalRadius);
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
+input[type="checkbox"]:checked {
+    accent-color: var(--couleurBouton);
+}
+.logo {
+    position: absolute;
+    top: 3px;
+    left: 20px;
+    width: 100px;
+}
+nav a {
+    font-family: WorkSans; 
+}
+.navbar {
+    position: absolute;
+    padding-right: 10%;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    z-index: 2;
+    background-color: var(--couleurMenu);
+    border-radius: 0;
+}
+.navbar .separateur::after {
+    content: "|";
+}
+.navbar .nav-links .nav-ul {
+    display: flex;
+    list-style: none;
+}
+.navbar .nav-links .nav-ul li{
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+.navbar .nav-links .nav-ul li a:not(.center):not(.lienBoutonDeconnexion) {
+    padding: 8px;
+}
+.navbar .nav-links .nav-ul li a:not(.center):not(.active):not(.lienBoutonDeconnexion):hover {
+    background-color: var(--couleurHover);
+    color: var(--couleurHoverMenuTexte);
+    padding: 8px;
+    border-radius: var(--globalRadius);
+}
+.sousMenu {
+    position: absolute;
+    margin-top: 6px;
+    list-style: none;
+    text-align: center;
+    display: none;
+    width: max-content;
+    background-color: #f2f3f3;
+    border-radius: var(--globalRadius);
+    padding-top: 14px;
+}
+.navbar .nav-links .nav-ul ul.sousMenu {
+    /* margin-left: -45px; */
+    justify-self: center;
+    align-self: center;
+}
+.navbar .nav-links .nav-ul .sousMenu li a {
+    color: var(--couleurBoutonHover);
+    font-size: .75em;
+}
+.navbar .nav-links .nav-ul .sousMenu li{
+    margin-bottom: 15px;
+}
+.navbar .nav-ul > li:hover .sousMenu {
+    display: block;
+}
+.navbar .menu-hamburger {
+    position: absolute;
+    display: none;
+    padding: 7px;
+    right: 5px;
+    top: 5px;
+    width: 35px;
+    z-index: 2;
+}
+.menu-hamburger:hover {
+    background-color: var(--couleurHover);
+    border-radius: var(--globalRadius);
+    cursor: pointer;
+}
+.active {
+    font-weight: bolder;
+    border-radius: var(--globalRadius);
+    background-color: var(--couleurHover);
+    padding: 8px;
+}
+.active:after {
+    content: url(../images/left-arrow.png);
+    justify-content: center;
+    vertical-align: middle;
+    filter:brightness(5000%);
+}
+/* Phone navbar 1062px*/
+@media screen and (max-width: 1062px) {
+    .navbar {
+        position: fixed;
+        padding: 0px;
+        width: 100%;
+    }
+    .navbar .logo {
+        z-index: 1;
+    }
+    .navbar .fondMobile {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        background-color: var(--couleurMenu);
+        width: 100%;
+        height: 60px;
+    }
+    .navbar .menu-hamburger {
+        display: block;
+    }
+    .nav-links {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        margin-left: -100%;
+        background-color: var(--couleurFondMenuMobile);
+        width: 100%;
+        height: 100vh;
+        transition: all .4s cubic-bezier(.86,.16,.28,1.24);
+    }
+    .nav-links.mobile-menu {
+        margin-left: 0;
+    }
+    .nav-links .nav-ul {
+        margin-top: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar .nav-links .nav-ul li:not(.sousMenu) {
+        margin-bottom: 0;
+        font-size: 1.4em;
+    }
+    .navbar .nav-links .nav-ul li:not(:first-child):not(.sousMenu) {
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+    .navbar ul.sousMenu {
+        margin-top: 6px;
+        padding: 10px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .navbar .sousMenu li:first-child {
+        margin-top: 0;
+    }
+    .navbar .separateur::after {
+        content: "______________________________";
+    }
+    .sousMenu {
+        position: initial;
+        font-size: .75em;
+        border-radius: var(--globalRadius);
+    }
+}
+
+#miseEnFormeFormulaire {
+    margin: 12%;
+    margin-top: 40px;
+    margin-bottom: 5%;
+    grid-template-columns: 1fr;
+}
+
+.miseEnForme {
+    background-color: var(--couleurMiseEnForme);
+    border-radius: 10px;
+    padding: 15px;
+    align-items: center;
+    justify-items: center;
+    box-shadow: -10px 10px 0px .1px #01534f;
+}
+
+div.miseEnForme {
+    /*ici responsive*/
+    display: grid;
+    grid-gap: 5px;
+}
+div.miseEnForme label {
+    text-align: left;
+    margin-left: 10%;
+    width: 100%;
+}
+
+.miseFormeConnexion {
+    background-color: var(--couleurBouton);
+    border-radius: 10px;
+    padding: 15px;
+    align-items: center;
+    justify-items: center;
+    box-shadow: -10px 10px 0px .1px var(--couleurHover);
+}
+
+div.miseFormeConnexion {
+    /*ici responsive*/
+    display: grid;
+    grid-gap: 5px;
+}
+div.miseFormeConnexion label {
+    text-align: left;
+    margin-left: 10%;
+    width: 100%;
+}
+#oeilMdp {
+    width: 25px;
+    height: 25px;
+}
+.iconeApp {
+    width: 50px;
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media screen and (min-width: 500px) {
+    #form {
+        margin-top: 5%;
+    }
+    #formConnexion {
+        margin-top: 5%;
+    }
+    #miseEnFormeConnexion {
+        grid-template-columns: max-content 1fr 0fr;
+    }
+    .iconeApp {
+        width: 150px;
+    }
+    #boutonConnexion {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+}
+@media screen and (min-width: 900px) {
+    #miseEnFormeConnexion {
+        margin: 25%;
+        margin-top: 0px;
+        margin-bottom: 5%;
+    }
+    #boutonConnexion {
+        color:var(--policeBlanche);
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+}
+.logo {
+    width: 30px;
+}
+#imageJoueur {
+    max-width: 100px;
+    clip-path: circle(50% at center);
+}
+#boutonsValiderAnnuler {
+    position: relative;
+    top: 10px;
+}
+.center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-items: center;
+}
+.centerRadio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.center1Item {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.centerIconeChamp {
+    display: grid;
+    margin-right: 5px;
+    grid-template-columns: max-content 1fr;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-items: center;
+}
+.boutonAjouterA {
+    width: fit-content;
+    justify-self: center;
+    align-self: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.boutons {
+    color:var(--policeBlanche);
+    background-color: var(--couleurBouton);
+    padding: 9px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+button > img,
+button > span {
+    vertical-align: middle;
+}
+.boutons:hover {
+    animation: hoverWave .15s cubic-bezier(.16,.83,.59,.91) forwards;
+    cursor: pointer;
+}
+.boutons:active {
+    animation: hoverClick .1s cubic-bezier(.16,.83,.59,.91) forwards;
+}
+
+.boutonAnnuler {
+    background-color: var(--couleurBoutonAnnuler);
+    color:var(--policeBlanche);
+    padding: 9px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.boutonAnnuler:hover {
+    animation: hoverWaveAnnuler .15s cubic-bezier(.16,.83,.59,.91) forwards;
+    cursor: pointer;
+}
+.boutonAnnuler:active {
+    animation: hoverClickAnnuler .1s cubic-bezier(.16,.83,.59,.91) forwards;
+}
+
+.boutonValider {
+    background-color: var(--couleurBoutonValider);
+    color:var(--policeBlanche);
+    padding: 9px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.boutonValider:hover {
+    animation: hoverWaveValider .15s cubic-bezier(.16,.83,.59,.91) forwards;
+    cursor: pointer;
+}
+.boutonValider:active {
+    animation: hoverClickValider .1s cubic-bezier(.16,.83,.59,.91) forwards;
+}
+
+.boutonSupprimer {
+    background-color: var(--couleurBoutonAnnuler);
+    color:var(--policeBlanche);
+    padding: 3px;
+    margin: 7px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.boutonSupprimer:hover {
+    animation: hoverWaveAnnuler .15s cubic-bezier(.16,.83,.59,.91) forwards;
+    cursor: pointer;
+}
+.boutonSupprimer:active {
+    animation: hoverClickAnnuler .1s cubic-bezier(.16,.83,.59,.91) forwards;
+}
+
+.boutonModifier {
+    background-color: var(--couleurPopupEdit);
+    color:var(--policeBlanche);
+    padding: 3px;
+    margin: 7px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.boutonModifier:hover {
+    animation: hoverWaveModifier .15s cubic-bezier(.16,.83,.59,.91) forwards;
+    cursor: pointer;
+}
+.boutonModifier:active {
+    animation: hoverClickModifier .1s cubic-bezier(.16,.83,.59,.91) forwards;
+}
+.boutonEdit {
+    background-color: var(--couleurPopupEdit);
+    color:var(--policeBlanche);
+    padding: 9px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.boutonEdit:hover {
+    animation: hoverWaveModifier .15s cubic-bezier(.16,.83,.59,.91) forwards;
+    cursor: pointer;
+}
+.boutonEdit:active {
+    animation: hoverWaveModifier .1s cubic-bezier(.16,.83,.59,.91) forwards;
+}
+.boutonConsulter {
+    background-color: lightgray;
+    color:var(--policeBlanche);
+    padding: 3px;
+    margin: 7px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.boutonConsulter:hover {
+    animation: hoverWaveConsulter .15s cubic-bezier(.16,.83,.59,.91) forwards;
+    cursor: pointer;
+}
+.boutonConsulter:active {
+    animation: hoverClickConsulter .1s cubic-bezier(.16,.83,.59,.91) forwards;
+}
+@keyframes hoverWave {
+    0% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 0%, var(--couleurBouton) 0);
+
+    }
+    10% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 10%, var(--couleurBouton) 0);
+
+    }
+    20% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 20%, var(--couleurBouton) 0);
+
+    }
+    30% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 30%, var(--couleurBouton) 0);
+
+    }
+    40% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 40%, var(--couleurBouton) 0);
+
+    }
+    50% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 50%, var(--couleurBouton) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 60%, var(--couleurBouton) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 70%, var(--couleurBouton) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 80%, var(--couleurBouton) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 90%, var(--couleurBouton) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurBoutonHover) 0 100%, var(--couleurBouton) 0);
+
+    }
+}
+@keyframes hoverClick {
+    50% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 10%, var(--couleurBouton) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 30%, var(--couleurBouton) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 40%, var(--couleurBouton) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 30%, var(--couleurBouton) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 10%, var(--couleurBouton) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 0%, var(--couleurBouton) 0);
+
+    }
+}
+@keyframes hoverWaveAnnuler {
+    0% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 0%, var(--couleurBouton) 0);
+    }
+    10% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 10%, var(--couleurBouton) 0);
+
+    }
+    20% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 20%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    30% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 30%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    40% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 40%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    50% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 50%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 60%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 70%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 80%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 90%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnulerHover) 0 100%, var(--couleurBoutonAnnuler) 0);
+
+    }
+}
+@keyframes hoverClickAnnuler {
+    50% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnuler) 0 10%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnuler) 0 30%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnuler) 0 40%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnuler) 0 30%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnuler) 0 10%, var(--couleurBoutonAnnuler) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurBoutonAnnuler) 0 0%, var(--couleurBoutonAnnuler) 0);
+
+    }
+}
+@keyframes hoverWaveValider {
+    0% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 0%, var(--couleurBoutonValider) 0);
+    }
+    10% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 10%, var(--couleurBoutonValider) 0);
+
+    }
+    20% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 20%, var(--couleurBoutonValider) 0);
+
+    }
+    30% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 30%, var(--couleurBoutonValider) 0);
+
+    }
+    40% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 40%, var(--couleurBoutonValider) 0);
+
+    }
+    50% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 50%, var(--couleurBoutonValider) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 60%, var(--couleurBoutonValider) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 70%, var(--couleurBoutonValider) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 80%, var(--couleurBoutonValider) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 90%, var(--couleurBoutonValider) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValiderHover) 0 100%, var(--couleurBoutonValider) 0);
+
+    }
+}
+@keyframes hoverClickValider {
+    50% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValider) 0 10%, var(--couleurBoutonValider) 0);
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValider) 0 30%, var(--couleurBoutonValider) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValider) 0 40%, var(--couleurBoutonValider) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValider) 0 30%, var(--couleurBoutonValider) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValider) 0 10%, var(--couleurBoutonValider) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurBoutonValider) 0 0%, var(--couleurBoutonValider) 0);
+    }
+}
+@keyframes hoverWaveEdit {
+    0% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 0%, var(--couleurBouton) 0);
+
+    }
+    10% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 10%, var(--couleurBouton) 0);
+
+    }
+    20% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 20%, var(--couleurBouton) 0);
+
+    }
+    30% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 30%, var(--couleurBouton) 0);
+
+    }
+    40% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 40%, var(--couleurBouton) 0);
+
+    }
+    50% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 50%, var(--couleurBouton) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 60%, var(--couleurBouton) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 70%, var(--couleurBouton) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 80%, var(--couleurBouton) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 90%, var(--couleurBouton) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 100%, var(--couleurBouton) 0);
+
+    }
+}
+@keyframes hoverClickEdit {
+    50% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 10%, var(--couleurBouton) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 30%, var(--couleurBouton) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 40%, var(--couleurBouton) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 30%, var(--couleurBouton) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 10%, var(--couleurBouton) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurBouton) 0 0%, var(--couleurBouton) 0);
+
+    }
+}
+@keyframes hoverWaveModifier {
+    0% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 0%, var(--couleurPopupEdit) 0);
+
+    }
+    10% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 10%, var(--couleurPopupEdit) 0);
+
+    }
+    20% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 20%, var(--couleurPopupEdit) 0);
+
+    }
+    30% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 30%, var(--couleurPopupEdit) 0);
+
+    }
+    40% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 40%, var(--couleurPopupEdit) 0);
+
+    }
+    50% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 50%, var(--couleurPopupEdit) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 60%, var(--couleurPopupEdit) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 70%, var(--couleurPopupEdit) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 80%, var(--couleurPopupEdit) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 90%, var(--couleurPopupEdit) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurMenuActif) 0 100%, var(--couleurPopupEdit) 0);
+
+    }
+}
+@keyframes hoverClickModifier {
+    50% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 10%, var(--couleurPopupEdit) 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 30%, var(--couleurPopupEdit) 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 40%, var(--couleurPopupEdit) 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 30%, var(--couleurPopupEdit) 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 10%, var(--couleurPopupEdit) 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, var(--couleurPopupEdit) 0 0%, var(--couleurPopupEdit) 0);
+
+    }
+}
+@keyframes hoverWaveConsulter {
+    0% {
+        background: radial-gradient(circle at center, grey 0 0%, lightgrey 0);
+
+    }
+    10% {
+        background: radial-gradient(circle at center, grey 0 10%, lightgrey 0);
+
+    }
+    20% {
+        background: radial-gradient(circle at center, grey 0 20%, lightgrey 0);
+
+    }
+    30% {
+        background: radial-gradient(circle at center, grey 0 30%, lightgrey 0);
+
+    }
+    40% {
+        background: radial-gradient(circle at center, grey 0 40%, lightgrey 0);
+
+    }
+    50% {
+        background: radial-gradient(circle at center, grey 0 50%, lightgrey 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, grey 0 60%, lightgrey 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, grey 0 70%, lightgrey 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, grey 0 80%, lightgrey 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, grey 0 90%, lightgrey 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, grey 0 100%, lightgrey 0);
+
+    }
+}
+@keyframes hoverClickConsulter {
+    50% {
+        background: radial-gradient(circle at center, lightgrey 0 10%, lightgrey 0);
+
+    }
+    60% {
+        background: radial-gradient(circle at center, lightgrey 0 30%, lightgrey 0);
+
+    }
+    70% {
+        background: radial-gradient(circle at center, lightgrey 0 40%, lightgrey 0);
+
+    }
+    80% {
+        background: radial-gradient(circle at center, lightgrey 0 30%, lightgrey 0);
+
+    }
+    90% {
+        background: radial-gradient(circle at center, lightgrey 0 10%, lightgrey 0);
+
+    }
+    100% {
+        background: radial-gradient(circle at center, lightgrey 0 0%, lightgrey 0);
+
+    }
+}
+
+.aCacher {
+    display: none;
+    width: 0;
+    height: 0;
+    position: absolute;
+    justify-self: center;
+    z-index: 2;
+}
+
+
+.fenButtonOn {
+    animation: fenBoutonApparition .6s forwards;
+    animation-iteration-count: 1;
+}
+.fenButtonOff {
+    animation: fenBoutonDisparition .6s forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes fenBoutonApparition {
+    0% {
+        clip-path: circle(0vh at center);
+
+    }
+    100% {
+        clip-path: circle(150vh at center);
+        width: 100%;
+        height: 100%;
+    }
+}
+@keyframes fenBoutonDisparition {
+    0% {
+        clip-path: circle(150vh at center);
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        clip-path: circle(0vh at center);
+        width: 0%;
+        height: 0%;
+    }
+}
+
+.transparent {
+    filter: opacity(0%);
+}
+
+.imageIcone {
+    width: 30px;
+}
+
+.centerIcon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.txtPopup {
+    margin-top: 25px;
+}
+
+.boutonFermerPopup {
+    position: absolute;
+    top: 0;
+    right:0;
+    margin: 0;
+    padding: 5px;
+    background: none;
+    color: var(--policeBlanche);
+    font-size: .80em;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.boutonFermerPopup:focus {
+    outline-color: var(--policeBlanche);
+}
+
+.validationPopup {
+    display: block;
+    position: fixed;
+    top: 50px;
+    background-color: var(--couleurBoutonValider);
+    border-radius: var(--globalRadius);
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-self: center;
+    justify-self: center;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.erreurPopup {
+    display: block;
+    position: fixed;
+    top: 50px;
+    background-color: var(--couleurBoutonAnnuler);
+    border-radius: var(--globalRadius);
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-self: center;
+    justify-self: center;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.supprPopup {
+    display: block;
+    position: fixed;
+    top: 50px;
+    background-color: var(--couleurBoutonAnnuler);
+    border-radius: var(--globalRadius);
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-self: center;
+    justify-self: center;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.editPopup {
+    display: block;
+    position: fixed;
+    top: 50px;
+    background-color: var(--couleurPopupEdit);
+    border-radius: var(--globalRadius);
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-self: center;
+    justify-self: center;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.alertPopup {
+    display: block;
+    position: fixed;
+    top: 50px;
+    background-color: #ff944d;
+    border-radius: var(--globalRadius);
+    padding: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-self: center;
+    justify-self: center;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+#boutonsValiderAnnuler {
+    position: relative;
+    top: 10px;
+}
+
+::file-selector-button {
+    color: var(--policeBlanche);
+    background-color: var(--couleurBouton);
+    padding: 9px;
+    border-radius: var(--globalRadius);
+    border-style: none;
+    font-family: WorkSans;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+::file-selector-button:hover {
+    background-color: var(--couleurBoutonHover);
+}
+
+/* DANS LE PC */
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: .9em;
+    }
+    .boutonAnnuler .imageIcone {
+        width: 20px;
+        margin: 0px;
+    }
+    .boutonValider .imageIcone {
+        width: 20px;
+        margin: 0px;
+    }
+    .boutonEdit .imageIcone {
+        width: 20px;
+        margin: 0px;
+    }
+}
+@media screen and (min-width: 500px) {
+    #form {
+        margin-top: 5%;
+    }
+    #miseEnFormeFormulaire {
+        grid-template-columns: max-content 1fr .1fr;
+    }
+}
+@media screen and (max-width: 1200px){
+    thead {
+        display: none;
+    }
+    table, table tbody, table tr, table td {
+        display: block;
+        width: auto;
+        border-left: none;
+    }   
+    table tr {
+        margin-bottom: 15px;
+        border-radius: var(--globalRadius);
+    }
+    table td {
+        margin: 10px;
+        padding-top: 5px;
+        position: relative;
+        text-align: right;
+        border-bottom: 1px solid var(--couleurBoutonValider);
+    }
+    table td:first-child {
+        padding-top: 20px;
+        border-radius: 0px;
+    }
+    table td:last-child {
+        border: none;
+    }
+    #tbodyGererJoueurs td::before{
+        position: absolute;
+        font-weight: bold;
+        font-size: 1.05em;
+        left: 0;
+        width: 50%;
+        text-align: left;
+    }
+    #tbodyGererJoueurs td:first-child::before{
+        content: "Photo :";
+    }
+    #tbodyGererJoueurs td:nth-child(2)::before{
+        content: "Nom :";
+    }
+    #tbodyGererJoueurs td:nth-child(3)::before{
+        content: "Prenom :";
+    }
+    #tbodyGererJoueurs td:nth-child(4)::before{
+        content: "Numero de licence :";
+    }
+    #tbodyGererJoueurs td:nth-child(5)::before{
+        content: "Date de naissance :";
+    }
+    #tbodyGererJoueurs td:nth-child(6)::before{
+        content: "Taille :";
+    }
+    #tbodyGererJoueurs td:nth-child(7)::before{
+        content: "Poids :";
+    }
+    #tbodyGererJoueurs td:nth-child(8)::before{
+        content: "Poste prefere :";
+    }
+    #tbodyGererJoueurs td:nth-child(9)::before{
+        content: "Statut :";
+    }
+    #tbodyGererDispos td::before{
+        position: absolute;
+        font-weight: bold;
+        font-size: 1.05em;
+        left: 0;
+        width: 50%;
+        text-align: left;
+    }
+    #tbodyGererDispos td:first-child::before{
+        content: "Photo :";
+    }
+    #tbodyGererDispos td:nth-child(2)::before{
+        content: "Nom :";
+    }
+    #tbodyGererDispos td:nth-child(3)::before{
+        content: "Prenom :";
+    }
+    #tbodyGererDispos td:nth-child(4)::before{
+        content: "Taille :";
+    }
+    #tbodyGererDispos td:nth-child(5)::before{
+        content: "Poids :";
+    }
+    #tbodyGererDispos td:nth-child(6)::before{
+        content: "Commentaires :";
+    }
+    #tbodyGererDispos td:nth-child(7)::before{
+        content: "Poste prefere :";
+    }
+    #tbodyGererDispos td:nth-child(7)::before{
+        content: "Notation moyenne :";
+    }
+    #tbodyGererSelection td::before{
+        position: absolute;
+        font-weight: bold;
+        font-size: 1.05em;
+        left: 0;
+        width: 50%;
+        text-align: left;
+    }
+    #tbodyGererSelection td:first-child::before{
+        content: "Photo :";
+    }
+    #tbodyGererSelection td:nth-child(2)::before{
+        content: "Nom :";
+    }
+    #tbodyGererSelection td:nth-child(3)::before{
+        content: "Prenom :";
+    }
+    #tbodyGererSelection td:nth-child(4)::before{
+        content: "Taille :";
+    }
+    #tbodyGererSelection td:nth-child(5)::before{
+        content: "Poids :";
+    }
+    #tbodyGererSelection td:nth-child(6)::before{
+        content: "Commentaires :";
+    }
+    #tbodyGererSelection td:nth-child(7)::before{
+        content: "Poste prefere :";
+    }
+    #tbodyGererSelection td:nth-child(8)::before{
+        content: "Poste pour le match :";
+    }
+    #tbodyGererSelection td:nth-child(9)::before{
+        content: "Note :";
+    }
+    #tbodyGererMatchs td::before{
+        position: absolute;
+        font-weight: bold;
+        font-size: 1.05em;
+        left: 0;
+        width: 50%;
+        text-align: left;
+    }
+    #tbodyGererMatchs td:first-child::before{
+        content: "Adversaires :";
+    }
+    #tbodyGererMatchs td:nth-child(2)::before{
+        content: "Date :";
+    }
+    #tbodyGererMatchs td:nth-child(3)::before{
+        content: "Lieu :";
+    }
+    #tbodyGererMatchs td:nth-child(4)::before{
+        content: "Score final (Nombre de sets gagnants) :";
+    }
+}
+@media screen and (max-width: 700px) {
+    .boutonSupprimer .imageIcone {
+        width: 20px;
+        margin: 5px;
+    }
+    .boutonSupprimer span {
+        width: 20px;
+        margin: 5px;
+    }
+    .boutonModifier .imageIcone {
+        width: 20px;
+        margin: 5px;
+    }
+    .boutonModifier span {
+        width: 20px;
+        margin: 5px;
+    }
+}
+
+.imageJoueurGestion {
+    max-width: 70px;
+    clip-path: circle(50% at center);
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 20px;
+    background-color: lightgray;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.progress {
+    z-index: 2;
+    border-radius: 5px;
+    height: 100%;
+}
+  
+.percentage {
+    z-index: 2;
+    margin-left: -40px;
+    text-align: center;
+}
+
+.titreFeuille {
+    color: var(--policeNoire);
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+.msgSelection {
+    font-family: Georama;
+    display: grid;
+    justify-self: center;
+    font-size: 1.2em;
+    color: red;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 100px;
+    margin-left: 20px;
+    text-decoration: underline;
+    font-size: 1.5em;
+    color: var(--couleurBoutonHover);
+}
+
+#pie-chart {
+    position: relative;
+    bottom: -70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#noteJoueur {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#tauxVictoire {
+    position: absolute;
+    top: 140px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold; 
+}
